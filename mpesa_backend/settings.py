@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'payments', 
-     "corsheaders", # Add
+    
 ]
 ALLOWED_HOSTS = [
     'localhost',
