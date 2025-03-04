@@ -48,7 +48,7 @@ def initiate_stk_push(phone_number, amount, reference):
             "Password": password,
             "Timestamp": timestamp,
             "TransactionType": "CustomerPayBillOnline",
-            "Amount": int(amount),
+            "Amount": int(float(amount)),
             "PartyA": formatted_phone,
             "PartyB": settings.MPESA_SHORTCODE,
             "PhoneNumber": formatted_phone,
