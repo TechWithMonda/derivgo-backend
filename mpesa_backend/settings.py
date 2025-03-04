@@ -53,6 +53,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '1e77-102-0-16-50.ngrok-free.app' 
+    'derivgo-backend.onrender.com'
     
 ]
 
@@ -65,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middeleware.WhiteNoiseMiddleware'
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
