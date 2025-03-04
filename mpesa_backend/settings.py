@@ -25,15 +25,38 @@ SECRET_KEY = 'django-insecure-3w)du5q*9#%5%o!ed%mpg9$!79t&658$qe-ar)*tgc-2ca=cmw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+
 import os
 
+# MPESA_CONFIGS = {
+#     "CONSUMER_KEY": os.getenv("MPESA_CONSUMER_KEY"),
+#     "CONSUMER_SECRET": os.getenv("MPESA_CONSUMER_SECRET"),
+#     "SHORTCODE": os.getenv("MPESA_SHORTCODE", "600998"),  # Use test shortcode
+#     "PASSKEY": os.getenv("MPESA_PASSKEY", "YOUR_PASSKEY_HERE"),
+#     "CALLBACK_URL": os.getenv("MPESA_CALLBACK_URL", "https://derivgo-backend.onrender.com//callback"),
+#     "ENVIRONMENT": os.getenv("MPESA_ENVIRONMENT", "sandbox"),  # Keep as 'sandbox' for testing
+# }
+import environ
 
-MPESA_CONSUMER_KEY = os.getenv("MPESA_CONSUMER_KEY")
-MPESA_CONSUMER_SECRET = os.getenv("MPESA_CONSUMER_SECRET")
-MPESA_PASSKEY = os.getenv("MPESA_PASSKEY")
-MPESA_BUSINESS_SHORT_CODE = os.getenv("MPESA_")
-MPESA_CALLBACK_URL = os.getenv("MPESA_CALLBACK_URL")
-MPESA_TRANSACTION_TYPE= os.getenv("MPESA_TRANSACTION_TYPE")
+env = environ.Env()
+environ.Env.read_env()  # Reads the .env file
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+MPESA_CONFIGS = {
+    'CONSUMER_KEY': env('MPESA_CONSUMER_KEY'),
+    'CONSUMER_SECRET': env('MPESA_CONSUMER_SECRET'),
+    'BUSINESS_SHORT_CODE': env('MPESA_BUSINESS_SHORT_CODE'),
+    'PASS_KEY': env('MPESA_PASS_KEY'),
+    'TRANSACTION_TYPE': env('MPESA_TRANSACTION_TYPE'),
+    'CALLBACK_URL': env('MPESA_CALLBACK_URL'),
+}
+
+
+
 
 # Application definition
 
@@ -54,11 +77,12 @@ INSTALLED_APPS = [
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '1e77-102-0-16-50.ngrok-free.app', 
+    'e894-102-0-16-50.ngrok-free.app', 
     'derivgo-backend.onrender.com',
-     'theblacksamurai.site',
-    
+    'theblacksamurai.site'
 ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -73,9 +97,18 @@ MIDDLEWARE = [
 
 ]
 CSRF_TRUSTED_ORIGINS = [
+    "https://e894-102-0-16-50.ngrok-free.app",
     "https://derivgo-backend.onrender.com",
     "https://theblacksamurai.site",
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://e894-102-0-16-50.ngrok-free.app",
+    "https://derivgo-backend.onrender.com",
+    "https://theblacksamurai.site"
+]
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -113,7 +146,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mpesa_backend.wsgi.application'
 
+from pathlib import Path
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # Correct usage of Path object
+    }
+}
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']  # Correct usage of Path object
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
