@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'payments', 
     'corsheaders',
-    'django_extensions',
     
 ]
 ALLOWED_HOSTS = [
