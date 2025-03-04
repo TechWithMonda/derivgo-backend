@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'payments', 
+      'corsheaders',
     
 ]
 ALLOWED_HOSTS = [
@@ -72,6 +73,20 @@ CORS_ALLOWED_ORIGINS = [
     'derivgo-backend.onrender.com'
     'theblacksamurai.site'
     # Add your production frontend URL here
+]
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS"
+]
+
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+    "x-requested-with"
 ]
 ROOT_URLCONF = 'mpesa_backend.urls'
 
