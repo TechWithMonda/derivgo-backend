@@ -56,6 +56,9 @@ def initiate_stk_push(phone_number, amount, reference):
             "AccountReference": reference,
             "TransactionDesc": f"Payment for {reference}"
         }
+        import json
+        print("STK Payload:", json.dumps(payload, indent=4))
+
         
         response = requests.post(
             "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",

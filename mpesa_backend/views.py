@@ -74,7 +74,7 @@ def mpesa_payment(request):
     return JsonResponse({'error': 'Invalid request method'}, status=400)
 
 
-@csrf_exempt
+
 def mpesa_callback(request):
     if request.method == "POST":
         try:
