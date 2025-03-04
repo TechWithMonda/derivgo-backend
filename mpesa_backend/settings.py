@@ -50,8 +50,8 @@ INSTALLED_APPS = [
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '1e77-102-0-16-50.ngrok-free.app' 
-    'derivgo-backend.onrender.com'
+    '1e77-102-0-16-50.ngrok-free.app', 
+    'derivgo-backend.onrender.com',
     
 ]
 
@@ -69,6 +69,8 @@ MIDDLEWARE = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    'derivgo-backend.onrender.com'
+    'theblacksamurai.site'
     # Add your production frontend URL here
 ]
 ROOT_URLCONF = 'mpesa_backend.urls'
