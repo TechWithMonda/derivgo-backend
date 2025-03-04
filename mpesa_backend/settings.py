@@ -53,6 +53,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '1e77-102-0-16-50.ngrok-free.app', 
     'derivgo-backend.onrender.com',
+     'theblacksamurai.site',
     
 ]
 
