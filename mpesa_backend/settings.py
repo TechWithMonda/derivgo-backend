@@ -25,16 +25,14 @@ SECRET_KEY = 'django-insecure-3w)du5q*9#%5%o!ed%mpg9$!79t&658$qe-ar)*tgc-2ca=cmw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+import os
 
-
-MPESA_CONFIGS = {
-    'CONSUMER_KEY': 'cUgsniQCei2bSwIFrWaSZ1e4siG02bbFqDOJo8iFutEmM2Qe',
-    'CONSUMER_SECRET': '5iAGc6tElGPPAopum4jgj5Bxtto32ua5XCHpn56kkEe2mrT2ZDZ9QztpMBSvZA5l',
-    'BUSINESS_SHORT_CODE': '174379',
-    'PASS_KEY': 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919',
-    'TRANSACTION_TYPE': 'CustomerPayBillOnline',
-    'CALLBACK_URL':'https://1e77-102-0-16-50.ngrok-free.app/mpesa-callback',
-}
+MPESA_ENV = os.getenv("MPESA_ENV", "sandbox")
+MPESA_CONSUMER_KEY = os.getenv("MPESA_CONSUMER_KEY")
+MPESA_CONSUMER_SECRET = os.getenv("MPESA_CONSUMER_SECRET")
+MPESA_PASSKEY = os.getenv("MPESA_PASSKEY")
+MPESA_SHORTCODE = os.getenv("MPESA_SHORTCODE")
+MPESA_CALLBACK_URL = os.getenv("MPESA_CALLBACK_URL")
 
 # Application definition
 
