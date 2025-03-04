@@ -70,8 +70,8 @@ MIDDLEWARE = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    'derivgo-backend.onrender.com'
-    'theblacksamurai.site'
+    'derivgo-backend.onrender.com',
+    'theblacksamurai.site',
     # Add your production frontend URL here
 ]
 CORS_ALLOW_METHODS = [
