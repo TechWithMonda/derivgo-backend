@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'payments', 
-      'corsheaders',
+    'corsheaders',
+    'django_extensions',
     
 ]
 ALLOWED_HOSTS = [
@@ -69,12 +70,13 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware'
 
 ]
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    'derivgo-backend.onrender.com',
-    'theblacksamurai.site',
-    # Add your production frontend URL here
+CSRF_TRUSTED_ORIGINS = [
+    "https://derivgo-backend.onrender.com",
+    "https://theblacksamurai.site",
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOW_METHODS = [
     "GET",
     "POST",

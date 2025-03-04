@@ -94,3 +94,8 @@ def mpesa_callback(request):
             return JsonResponse({'error': str(e)}, status=400)
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+from django.http import JsonResponse
+
+def home(request):
+    return JsonResponse({"message": "Welcome to the M-Pesa API!"})
